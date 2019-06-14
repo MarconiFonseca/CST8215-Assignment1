@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1" last-position="0,0" last-zoom="0.7"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" fill-color="#94e1e5" sql-disabled="true">
+</schema>
+
+<textbox name="Assignment #1" font-size="9">
+	<position x="40" y="60"/>
+	<comment><![CDATA[Assignment #1
+Marconi Fonseca
+2018-10-21
+]]></comment>
+</textbox>
+
+<table name="Student data">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="540" y="200"/>
+	<column name="ID" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="Birthdate" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="Name" not-null="true">
+		<type name="text" length="50"/>
+	</column>
+	<column name="Address" not-null="true">
+		<type name="text" length="50"/>
+	</column>
+	<column name="Gender" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Date enrolled" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Student_data_pk" type="pk-constr" table="public.&quot;Student data&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Legal guardian">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="920" y="80"/>
+	<column name="ID" not-null="true">
+		<type name="char" length="0"/>
+	</column>
+	<column name="Name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Address" not-null="true">
+		<type name="text" length="50"/>
+	</column>
+	<column name="Birthdate" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="Gender" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Home phone" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="Legal_guardian_data_pk" type="pk-constr" table="public.&quot;Legal guardian&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Enrollments">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="180" y="60"/>
+	<column name="ID" not-null="true">
+		<type name="char" length="0"/>
+	</column>
+	<column name="Courses enrolled">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Enrollments_pk" type="pk-constr" table="public.&quot;Enrollments&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Disciplinary actions">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="680" y="480"/>
+	<column name="ID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="Date of incident">
+		<type name="date" length="0"/>
+	</column>
+	<column name="Type of incident" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Disciplinary actions_pk" type="pk-constr" table="public.&quot;Disciplinary actions&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Grades for each course">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="180"/>
+	<column name="ID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="Grades for each course" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="Grades for each course_pk" type="pk-constr" table="public.&quot;Grades for each course&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Post high school plans">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="940" y="240"/>
+	<column name="ID" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="Date of applications" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="Result of applications" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Post high school plans_pk" type="pk-constr" table="public.&quot;Post high school plans&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="ID_List of Colleges" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="List of Colleges_fk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="Extracurricular activities">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="400" y="400"/>
+	<column name="ID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="Offices/positions held" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Extracurricular activities_pk" type="pk-constr" table="public.&quot;Extracurricular activities&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="ID_Academic year" index="2"/>
+		<object name="ID_Club" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Academic year_fk" index="1"/>
+		<object name="Club_fk" index="2"/>
+	</customidxs>
+</table>
+
+<table name="Standardized testing results">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="900" y="380"/>
+	<column name="ID" not-null="true">
+		<type name="char" length="0"/>
+	</column>
+	<column name="Result of test" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Standardized testing results_pk" type="pk-constr" table="public.&quot;Standardized testing results&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Academic year">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="260"/>
+	<column name="ID" not-null="true">
+		<type name="char" length="0"/>
+	</column>
+	<column name="Academic year" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Academic year_pk" type="pk-constr" table="public.&quot;Academic year&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Room">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="480"/>
+	<column name="ID" not-null="true">
+		<type name="char" length="0"/>
+	</column>
+	<column name="Homeroom teacher" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Homeroom location" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Room Location_pk" type="pk-constr" table="public.&quot;Room&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Courses">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="0" y="340"/>
+	<column name="ID" not-null="true">
+		<type name="char" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="location of each course" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Course Location_pk" type="pk-constr" table="public.&quot;Courses&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Room_has_many_Courses" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Room&quot;"
+	 dst-table="public.&quot;Courses&quot;"
+	 src-required="true" dst-required="false"/>
+
+<table name="Standardized testing">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1280" y="400"/>
+	<column name="ID" not-null="true">
+		<type name="char" length="0"/>
+	</column>
+	<column name="Date of test" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="Name of test" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Standardized testing_pk" type="pk-constr" table="public.&quot;Standardized testing&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Student data_has_many_Standardized testing results" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Student data&quot;"
+	 dst-table="public.&quot;Standardized testing results&quot;"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="Standardized testing_has_many_Standardized testing results" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Standardized testing&quot;"
+	 dst-table="public.&quot;Standardized testing results&quot;"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="144.532" y="6.16434"/>
+	</label>
+</relationship>
+
+<table name="Types of Disciplinary action">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1120" y="500"/>
+	<column name="ID" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="Disciplinary action" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Types of Disciplinary action_pk" type="pk-constr" table="public.&quot;Types of Disciplinary action&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Types of Disciplinary action_has_many_Disciplinary actions" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Types of Disciplinary action&quot;"
+	 dst-table="public.&quot;Disciplinary actions&quot;"
+	 src-required="true" dst-required="false"/>
+
+<table name="Club">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="420" y="560"/>
+	<column name="ID" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Club_pk" type="pk-constr" table="public.&quot;Club&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Academic year_has_many_Extracurricular activities" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Academic year&quot;"
+	 dst-table="public.&quot;Extracurricular activities&quot;"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="Club_has_many_Extracurricular activities" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Club&quot;"
+	 dst-table="public.&quot;Extracurricular activities&quot;"
+	 src-required="true" dst-required="false"/>
+
+<table name="List of Colleges">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1300" y="260"/>
+	<column name="ID" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="Names" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="List of Colleges_pk" type="pk-constr" table="public.&quot;List of Colleges&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="List of Colleges_has_many_Post high school plans" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;List of Colleges&quot;"
+	 dst-table="public.&quot;Post high school plans&quot;"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="many_Extracurricular activities_has_many_Student data" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#5aa578"
+	 src-table="public.&quot;Extracurricular activities&quot;"
+	 dst-table="public.&quot;Student data&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_Extracurricular activities_has_many_Student data">
+	<label ref-type="name-label">
+		<position x="115.211" y="35.1643"/>
+	</label>
+</relationship>
+
+<relationship name="Academic year_has_many_Enrollments" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Academic year&quot;"
+	 dst-table="public.&quot;Enrollments&quot;"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="many_Student data_has_many_Enrollments" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#5aa578"
+	 src-table="public.&quot;Student data&quot;"
+	 dst-table="public.&quot;Enrollments&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_Student data_has_many_Enrollments"/>
+
+<relationship name="many_Courses_has_many_Grades for each course" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#5aa578"
+	 src-table="public.&quot;Courses&quot;"
+	 dst-table="public.&quot;Grades for each course&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_Courses_has_many_Grades for each course"/>
+
+<relationship name="many_Grades for each course_has_many_Enrollments" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#5aa578"
+	 src-table="public.&quot;Grades for each course&quot;"
+	 dst-table="public.&quot;Enrollments&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_Grades for each course_has_many_Enrollments"/>
+
+<relationship name="many_Student data_has_many_Legal guardian" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Student data&quot;"
+	 dst-table="public.&quot;Legal guardian&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_Student data_has_many_Legal guardian"/>
+
+<relationship name="many_Student data_has_many_Post high school plans" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Student data&quot;"
+	 dst-table="public.&quot;Post high school plans&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_Student data_has_many_Post high school plans"/>
+
+<relationship name="many_Student data_has_many_Disciplinary actions" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Student data&quot;"
+	 dst-table="public.&quot;Disciplinary actions&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_Student data_has_many_Disciplinary actions"/>
+
+<table name="Date unenrolled">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="580" y="60"/>
+	<column name="ID" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="Reasons" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Date" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="Date unenrolled_pk" type="pk-constr" table="public.&quot;Date unenrolled&quot;">
+		<columns names="ID" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Date unenrolled_has_one_Student data" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#83af1f"
+	 src-table="public.&quot;Student data&quot;"
+	 dst-table="public.&quot;Date unenrolled&quot;"
+	 src-required="true" dst-required="false"/>
+
+</dbmodel>
